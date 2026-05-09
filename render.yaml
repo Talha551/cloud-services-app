@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: cloud-services-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        sync: false
+      - key: SOLUSVM_API_BASE_URL
+        sync: false
+      - key: SOLUSVM_API_TOKEN
+        sync: false
+      - key: SOLUSVM_AUTH_HEADER
+        value: Authorization
+      - key: SOLUSVM_AUTH_PREFIX
+        value: Bearer
+      - key: SOLUSVM_CONSOLE_PATH_TEMPLATE
+        sync: false
+      - key: SOLUSVM_CONSOLE_METHOD
+        value: POST
+      - key: SOLUSVM_CONSOLE_URL_FIELD
+        sync: false
+      - key: SOLUSVM_LOOKUP_ENABLED
+        value: true
+      - key: SOLUSVM_LOOKUP_PATH_TEMPLATE
+        sync: false
+      - key: SOLUSVM_LOOKUP_METHOD
+        value: GET
+      - key: SOLUSVM_LOOKUP_INSTANCE_ID_FIELD
+        sync: false

@@ -1,0 +1,25 @@
+import api from '../lib/api';
+
+export const serverService = {
+  list: (params) => api.get('/servers', { params }),
+  get: (id) => api.get(`/servers/${id}`),
+  create: (data) => api.post('/servers', data),
+  update: (id, data) => api.patch(`/servers/${id}`, data),
+  delete: (id) => api.delete(`/servers/${id}`),
+  deleteMany: (ids) => api.delete('/servers/delete', { data: { ids } }),
+  start: (id) => api.post(`/servers/${id}/start`),
+  stop: (id, force = false) => api.post(`/servers/${id}/stop`, { force }),
+  restart: (id) => api.post(`/servers/${id}/restart`),
+  suspend: (id) => api.post(`/servers/${id}/suspend`),
+  resume: (id) => api.post(`/servers/${id}/resume`),
+  reinstall: (id, data) => api.post(`/servers/${id}/reinstall`, data),
+  resize: (id, data) => api.post(`/servers/${id}/resize`, data),
+  resetPassword: (id, data) => api.post(`/servers/${id}/reset_password`, data),
+  vnc: (id) => api.post(`/servers/${id}/vnc_up`),
+  backups: (id) => api.get(`/servers/${id}/backups`),
+  snapshots: (id) => api.get(`/servers/${id}/snapshots`),
+  ips: (id) => api.get(`/servers/${id}/ips`),
+  disks: (id) => api.get(`/servers/${id}/disks`),
+  settings: (id) => api.get(`/servers/${id}/settings`),
+  limits: (id) => api.get(`/servers/${id}/limits`),
+};
