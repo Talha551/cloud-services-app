@@ -10,6 +10,7 @@ const seedDB = require('./db/seeder');
 const authRoutes = require('./routes/auth');
 const clientRoutes = require('./routes/client');
 const adminRoutes = require('./routes/admin');
+const mockApiV1Routes = require('./routes/mockApiV1');
 const authMiddleware = require('./middleware/auth');
 
 const app = express();
@@ -29,6 +30,7 @@ seedDB();
 app.use('/api/auth', authRoutes);
 app.use('/api/automation/v1/client', authMiddleware, clientRoutes);
 app.use('/api/automation/v1', authMiddleware, adminRoutes);
+app.use('/api/v1', authMiddleware, mockApiV1Routes);
 
 // Health check
 app.get('/health', (req, res) => {
